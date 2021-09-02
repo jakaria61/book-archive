@@ -1,9 +1,11 @@
 
 const errorDiv = document.getElementById('error');
 errorDiv.style.display = 'none';
+const bookContainer = document.getElementById('book-container');
 const searchBook = () => {
     const inputValue = document.getElementById('input-filed');
     const searchText = inputValue.value;
+    inputValue.value = '';
     //empty value error checking
     if (searchText === '') {
         errorDiv.style.display = 'block';
@@ -26,12 +28,11 @@ const showBook = (books) => {
     if ((bookList.length) === 0) {
         errorDiv.style.display = 'block';
         errorDiv.innerText = 'no result found';
-
+        bookContainer.textContent = '';
     }
     else {
         bookList.length ? errorDiv.style.display = 'none' : '';
         //bring book container from html
-        const bookContainer = document.getElementById('book-container');
         bookContainer.textContent = '';
         bookList.forEach(book => {
             let author = '';
